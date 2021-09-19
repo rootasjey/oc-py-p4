@@ -1,8 +1,8 @@
 import inquirer
-from pprint import pprint
 from enum import Enum
-from views.player_view import player_prompt
-from constants.common_constants import ANSWER_KEY
+from views.player.player_view import player_prompt
+from views.tournament.tournament_view import tournament_prompt
+from constants.common_constants import ANSWER_KEY, SOMETHING_UNEXPECTED_STR
 
 class Answer(Enum):
   """Possible answers for this prompt"""
@@ -30,9 +30,9 @@ def prompt():
         player_prompt()
 
       elif (answer[ANSWER_KEY] == answers_list[Answer.TOURNAMENT]):
-        pprint("This feature is NOT yet available.")
+        tournament_prompt()
       else:
-        pprint("Something unexpected happened")
+        print(SOMETHING_UNEXPECTED_STR)
 
 
 def main_question():
@@ -47,6 +47,7 @@ def main_question():
               answers_list[Answer.TOURNAMENT], 
               answers_list[Answer.EXIT]
             ],
+            carousel=True,
         )
     ])
 

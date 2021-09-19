@@ -1,7 +1,7 @@
 from tinydb import TinyDB
 from tinydb.table import Document
 import uuid
-from constants.show_player_view_constants import Answer, answers_list
+from constants.player_view_constants import Answer, answers_list
 
 db = TinyDB('data/players.json')
 

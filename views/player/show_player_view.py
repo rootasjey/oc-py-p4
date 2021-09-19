@@ -45,6 +45,8 @@ def show_single_player(answers):
     #pprint(player)
 
     print("------")
-    print(f"• First name: {player['first_name']}\n• Last name: {player['last_name']}\n• Elo: {player['elo']}\n• Sex: {player['sex']}\n• Birth date: {player['birth_date']}")
+    print(
+        f"• First name: {player['first_name']}\n• Last name: {player['last_name']}\n• Elo: {player['elo']}\n• Sex: {player['sex']}\n• Birth date: {player['birth_date']}"
+    )
     print("------")
     print("")

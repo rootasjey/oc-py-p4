@@ -1,9 +1,9 @@
 import inquirer
 from pprint import pprint
-from views.create_player_view import create_player_prompt
-from views.show_player_view import show_player_prompt
-from constants.show_player_view_constants import Answer, answers_list
-from constants.common_constants import ANSWER_KEY
+from views.player.create_player_view import create_player_prompt
+from views.player.show_player_view import show_player_prompt
+from constants.player_view_constants import Answer, answers_list
+from constants.common_constants import ANSWER_KEY, NOT_AVAILABLE_FEATURE_STR, SOMETHING_UNEXPECTED_STR
 
 def player_prompt():
   """Display player prompt"""
@@ -19,16 +19,16 @@ def player_prompt():
       create_player_prompt()
 
     elif (answer[ANSWER_KEY] == answers_list[Answer.UPDATE]):
-      pprint("This feature is NOT yet available.")
+      pprint(NOT_AVAILABLE_FEATURE_STR)
 
     elif (answer[ANSWER_KEY] == answers_list[Answer.DELETE]):
-      pprint("This feature is NOT yet available.")
+      pprint(NOT_AVAILABLE_FEATURE_STR)
 
     elif (answer[ANSWER_KEY] == answers_list[Answer.VIEW]):
       show_player_prompt()
 
     else:
-      pprint("Something unexpected happened")
+      pprint(SOMETHING_UNEXPECTED_STR)
 
 def main_question():
   """Display the main question to the user."""
@@ -44,6 +44,7 @@ def main_question():
             answers_list[Answer.DELETE],
             answers_list[Answer.BACK],
           ],
+          carousel=True,
       )
   ])
 
