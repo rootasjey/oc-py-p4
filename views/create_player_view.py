@@ -4,10 +4,7 @@ from enum import Enum
 import datetime
 from models.player import Player
 from controllers.player_controller import save_player
-
-# Constants to avoid manipulate strings value
-# → reduce typo mistakes
-ANSWER_KEY = "answer"
+import re
 
 class Answer(Enum):
   """Possible answers for this prompt"""
@@ -75,7 +72,6 @@ def start_questions():
       inquirer.Text(
           answers_list[Answer.BIRTH_DATE],
           message = "What is your birth date ?",
-          #validate = lambda _, x: re.match('\d{1,8}', x),
           default = "02/01/90",
           show_default = True,
       ),
@@ -89,8 +85,9 @@ def start_questions():
 
       inquirer.Text(
         answers_list[Answer.ELO], 
-        message="What is your rank ?",
-        default = "1200",
+        message = "What is your rank ?",
+        validate = lambda _, x: re.match("\d{1,4}", x),
+        default = 600,
         show_default = True,
       ),
   ])

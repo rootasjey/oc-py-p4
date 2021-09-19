@@ -1,23 +1,9 @@
 import inquirer
 from pprint import pprint
-from enum import Enum
 from views.create_player_view import create_player_prompt
-
-ANSWER_KEY = "answer"
-
-class Answer(Enum):
-  """Possible answers for this prompt"""
-  BACK = 0
-  CREATE = 1
-  UPDATE = 2
-  DELETE = 2
-
-answers_list = {
-  Answer.BACK: "Back",
-  Answer.CREATE: "Create a new player",
-  Answer.UPDATE: "Update a player",
-  Answer.DELETE: "Delete a player"
-}
+from views.show_player_view import show_player_prompt
+from constants.show_player_view_constants import Answer, answers_list
+from constants.common_constants import ANSWER_KEY
 
 def player_prompt():
   """Display player prompt"""
@@ -38,6 +24,9 @@ def player_prompt():
     elif (answer[ANSWER_KEY] == answers_list[Answer.DELETE]):
       pprint("This feature is NOT yet available.")
 
+    elif (answer[ANSWER_KEY] == answers_list[Answer.VIEW]):
+      show_player_prompt()
+
     else:
       pprint("Something unexpected happened")
 
@@ -50,6 +39,7 @@ def main_question():
           message="Player: What do you want to do?",
           choices=[
             answers_list[Answer.CREATE], 
+            answers_list[Answer.VIEW],
             answers_list[Answer.UPDATE], 
             answers_list[Answer.DELETE],
             answers_list[Answer.BACK],

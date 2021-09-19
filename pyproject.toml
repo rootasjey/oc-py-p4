@@ -7,6 +7,7 @@ authors = ["rootasjey <<>>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 inquirer = "^2.7.0"
+tinydb = "^4.5.1"
 
 [tool.poetry.dev-dependencies]
 

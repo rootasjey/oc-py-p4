@@ -2,8 +2,7 @@ import inquirer
 from pprint import pprint
 from enum import Enum
 from views.player_view import player_prompt
-
-ANSWER_KEY = "answer"
+from constants.common_constants import ANSWER_KEY
 
 class Answer(Enum):
   """Possible answers for this prompt"""

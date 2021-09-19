@@ -10,6 +10,15 @@ class Player:
     self.last_name = last_name
     self.sex = sex
     self.elo = elo
+    self.name = f"{first_name} {last_name}"
+
+  @property
+  def name(self):
+    return self._name
+
+  @name.setter
+  def name(self, value):
+    self._name = value
 
   def __str__(self):
     return f"{self.id} {self.first_name} {self.last_name} {self.birth_date} {self.sex} {self.elo}"
