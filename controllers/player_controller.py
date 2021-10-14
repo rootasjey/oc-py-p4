@@ -1,9 +1,20 @@
-from tinydb import TinyDB
+from tinydb import TinyDB, where
 from tinydb.table import Document
 import uuid
 from constants.player_view_constants import Answer, answers_list
+from models.player import Player
 
 db = TinyDB('data/players.json')
+
+def delete_player(player):
+  """Delete a single player from database."""
+  db.remove(where('id') == player.id)
+
+def deserialize_player(player_data):
+  """From JSON data, return a Player instance object."""
+  player = Player(player_data['id'], player_data['first_name'], player_data['last_name'], player_data['birth_date'], player_data['sex'], player_data['elo'])
+
+  return player
 
 def save_player(player):
   """Save a player to the database"""
@@ -26,6 +37,25 @@ def save_player(player):
   print("")
   print("-------------")
   print(f"saved player: {player.name} ({player.elo})")
+  print("-------------")
+  print("")
+
+def update_player(player):
+  """Update a player to the database"""
+
+  db.update({
+      'id': player.id,
+      'first_name': player.first_name,
+      'last_name': player.last_name,
+      'birth_date': player.birth_date,
+      'sex': player.sex,
+      'elo': int(player.elo),
+    }, 
+    doc_ids = [player.id])
+
+  print("")
+  print("-------------")
+  print(f"updated player: {player.name} ({player.elo})")
   print("-------------")
   print("")
 
