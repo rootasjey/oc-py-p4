@@ -43,8 +43,8 @@ def main_question():
             ANSWER_KEY,
             message = "General: What do you want to do?",
             choices = [
-              answers_list[Answer.PLAYER], 
               answers_list[Answer.TOURNAMENT], 
+              answers_list[Answer.PLAYER], 
               answers_list[Answer.EXIT]
             ],
             carousel=True,

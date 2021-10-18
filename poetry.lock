@@ -20,6 +20,14 @@ six = ">=1.9.0"
 wcwidth = ">=0.1.4"
 
 [[package]]
+name = "confine-controller"
+version = "1.0.2"
+description = "Django-based framework for building control servers for computer networking and distributed systems testbeds."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "inquirer"
 version = "2.7.0"
 description = "Collection of common interactive command line user interfaces, based on Inquirer.js"
@@ -86,7 +94,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "cc0c2b6dcf8438b77e469031b6db304ac5da50702c4b8be40d04cfb60a34650a"
+content-hash = "2b03a3707d4e50297125aa2a8d91a1913d37aed4b67558f83ce63ef082af59c2"
 
 [metadata.files]
 ansicon = [
@@ -96,6 +104,9 @@ ansicon = [
 blessed = [
     {file = "blessed-1.17.6-py2.py3-none-any.whl", hash = "sha256:8371d69ac55558e4b1591964873d6721136e9ea17a730aeb3add7d27761b134b"},
     {file = "blessed-1.17.6.tar.gz", hash = "sha256:a9a774fc6eda05248735b0d86e866d640ca2fef26038878f7e4d23f7749a1e40"},
+]
+confine-controller = [
+    {file = "confine-controller-1.0.2.tar.gz", hash = "sha256:3e07effc9d24d7b00cb9d15af9df5413f6f6febf64415d0ab366a1e23138b027"},
 ]
 inquirer = [
     {file = "inquirer-2.7.0-py2.py3-none-any.whl", hash = "sha256:d15e15de1ad5696f1967e7a23d8e2fce69d2e41a70b008948d676881ed94c3a5"},

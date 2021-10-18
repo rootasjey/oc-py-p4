@@ -34,7 +34,7 @@ def single_player_prompt(player):
         create_player_prompt(player)
 
       elif (answer[ANSWER_KEY] == answers_list[Answer.DELETE]):
-        delete_player_view(player)
+        delete_player(player)
         # return to previous prompt since this player is now deleted
         continue_prompt = False
 
@@ -60,9 +60,3 @@ def main_question(player):
 
   return answer
 
-def delete_player_view(player):
-  """Delete a single player"""
-  delete_player(player)
-
-def update_player_view(player):
-  """Update a single player fields"""

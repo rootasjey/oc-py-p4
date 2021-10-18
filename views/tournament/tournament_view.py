@@ -1,6 +1,8 @@
 import inquirer
-from constants.common_constants import ANSWER_KEY, NOT_AVAILABLE_FEATURE_STR, SOMETHING_UNEXPECTED_STR
+from constants.common_constants import ANSWER_KEY, SOMETHING_UNEXPECTED_STR
 from constants.tournament_view_constants import answers_list, Answer
+from views.tournament.create_tournament_view import create_tournament_prompt
+from views.tournament.show_tournament_view import show_tournament_prompt
 
 def tournament_prompt():
     """Display tournament prompt"""
@@ -13,22 +15,10 @@ def tournament_prompt():
             continue_prompt = False
 
         elif (answer[ANSWER_KEY] == answers_list[Answer.CREATE]):
-            print(NOT_AVAILABLE_FEATURE_STR)
-            print("")
-            # create_tournament_prompt()
-
-        elif (answer[ANSWER_KEY] == answers_list[Answer.UPDATE]):
-            print(NOT_AVAILABLE_FEATURE_STR)
-            print("")
-
-        elif (answer[ANSWER_KEY] == answers_list[Answer.DELETE]):
-            print(NOT_AVAILABLE_FEATURE_STR)
-            print("")
+            create_tournament_prompt()
 
         elif (answer[ANSWER_KEY] == answers_list[Answer.VIEW]):
-            print(NOT_AVAILABLE_FEATURE_STR)
-            # show_tournament_prompt()
-            print("")
+            show_tournament_prompt()
 
         else:
             print(SOMETHING_UNEXPECTED_STR)
@@ -43,10 +33,8 @@ def main_question():
             ANSWER_KEY,
             message="Player: What do you want to do?",
             choices=[
-                answers_list[Answer.CREATE],
                 answers_list[Answer.VIEW],
-                answers_list[Answer.UPDATE],
-                answers_list[Answer.DELETE],
+                answers_list[Answer.CREATE],
                 answers_list[Answer.BACK],
             ],
             carousel=True,

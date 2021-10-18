@@ -3,7 +3,7 @@
 class Player:
   """Player class who can participate to a chess game."""
   def __init__(self, id = None, first_name = "", 
-                    last_name = "", birth_date = 0, sex = "", elo = 0):
+                    last_name = "", birth_date = "", sex = "", elo = 0):
     self.id = id
     self.birth_date = birth_date
     self.first_name = first_name

@@ -12,7 +12,15 @@ def delete_player(player):
 
 def deserialize_player(player_data):
   """From JSON data, return a Player instance object."""
-  player = Player(player_data['id'], player_data['first_name'], player_data['last_name'], player_data['birth_date'], player_data['sex'], player_data['elo'])
+
+  player = Player(
+    player_data['id'], 
+    player_data['first_name'], 
+    player_data['last_name'], 
+    player_data['birth_date'], 
+    player_data['sex'], 
+    player_data['elo'],
+  )
 
   return player
 
@@ -63,7 +71,7 @@ def get_all_players():
   """Return all players from the database as a list of complexe data (Dictionnary of Dictionnary)"""
   return db.all()
 
-def get_all_players_as_list():
+def get_all_players_as_list(include_back = True):
   """Return all players from database as a list of string containing player's name and elo rating."""
   players = get_all_players()
   
@@ -71,8 +79,9 @@ def get_all_players_as_list():
   # and convert the result back (from an iterator) to a list.
   players_list = list(map(format_player, players))
 
-  # Append 'exit' entry at the end of the list.
-  players_list.append(answers_list[Answer.BACK])
+  if include_back:
+    # Append 'exit' entry at the end of the list.
+    players_list.append(answers_list[Answer.BACK])
 
   return players_list
 
