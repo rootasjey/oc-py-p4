@@ -13,7 +13,7 @@ Openclassroom Python path - project 4
 
 ```shell
 # Somewhere on your computer
-git clone https://github.com/rootasjey/oc-py-p4
+https://github.com/MAM95190/Projet_4.git
 ```
 
 ```shell
