@@ -1,4 +1,4 @@
-# oc-py-p4
+# oc-py-P4
 
 Openclassroom Python path - project 4
 
