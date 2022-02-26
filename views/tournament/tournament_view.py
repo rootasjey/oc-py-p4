@@ -31,7 +31,7 @@ def main_question():
     answer = inquirer.prompt([
         inquirer.List(
             ANSWER_KEY,
-            message="Player: What do you want to do?",
+            message="Tournament: What do you want to do?",
             choices=[
                 answers_list[Answer.VIEW],
                 answers_list[Answer.CREATE],

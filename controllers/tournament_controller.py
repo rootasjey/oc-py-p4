@@ -2,17 +2,45 @@ from tinydb import TinyDB, where
 from tinydb.table import Document
 import uuid
 from constants.player_view_constants import Answer, answers_list
+#from constants.tournament_view_constants import Answer, answers_list
 from models.tournament import Tournament
 
-db = TinyDB('data/tournaments.json')
+db = TinyDB('data/tournaments.json') 
+
+def add_turn_to_tournament(tournament,turn):
+  """Add a new turn to the target tournament."""
+
+  if turn.id not in tournament.turns:
+    tournament.turns.append(turn.id)
+    update_tournament(tournament)
+
+    print(f"Successfully add turn '{turn.name}' to tournament {tournament.name} - {tournament.location} ({tournament.start_date} - {tournament.end_date})")
+
+  else:
+    print("Ce tour existe déjà dans le tournoi")
+
+  print('_________')
+
+
+
+ 
+
 
 def add_player_to_tournament(tournament, player):
   """Add a new player to the target tournament."""
-  tournament.players.append(player.id)
-  update_tournament(tournament)
 
-  print(f"Successfully add player '{player.name}' to tournament {tournament.name} - {tournament.location} ({tournament.start_date} - {tournament.end_date})")
+  if player.id not in tournament.players:
+    tournament.players.append(player.id)
+    update_tournament(tournament)
+
+    print(f"Successfully add player '{player.name}' to tournament {tournament.name} - {tournament.location} ({tournament.start_date} - {tournament.end_date})")
+
+  else:
+    print("Ce joueur existe déjà dans le tournoi")
+
   print('_________')
+
+
 
 def update_tournament(tournament):
   """Save an existing tournament in database."""
@@ -28,6 +56,7 @@ def update_tournament(tournament):
     'time_control': tournament.time_control,
     'players': tournament.players,
     'description': tournament.description,
+    'encounters': tournament.encounters,
   }, 
   doc_ids = [tournament.id])
 
@@ -51,6 +80,7 @@ def deserialize_tournament(tournament_data):
     turns=tournament_data['turns'], 
     time_control=tournament_data['time_control'], 
     description=tournament_data['description'],
+    encounters=tournament_data['encounters'],
   )
 
   return tournament
@@ -73,6 +103,7 @@ def create_tournament(tournament):
       'time_control': tournament.time_control,
       'players': tournament.players,
       'description': tournament.description,
+      'encounters': tournament.encounters,
     }, 
     doc_id = id)
   )

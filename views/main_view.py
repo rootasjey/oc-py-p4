@@ -13,7 +13,7 @@ class Answer(Enum):
 answers_list = {
   Answer.EXIT: "Exit",
   Answer.PLAYER: "Manage players",
-  Answer.TOURNAMENT: "Manage tournaments",
+  Answer.TOURNAMENT: "Manage tournaments"
 }
 
 def prompt():
@@ -31,6 +31,7 @@ def prompt():
 
       elif (answer[ANSWER_KEY] == answers_list[Answer.TOURNAMENT]):
         tournament_prompt()
+
       else:
         print(SOMETHING_UNEXPECTED_STR)
 

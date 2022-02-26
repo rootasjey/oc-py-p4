@@ -25,6 +25,7 @@ answers_list = {
 def create_player_prompt(player = None):
   """Create a new player and add them to the database"""
   # if a player is provided, the prompt is filled with they values as default.
+  
   answers = start_questions(player)
   
   date_string = answers[answers_list[Answer.BIRTH_DATE]]
@@ -39,10 +40,12 @@ def create_player_prompt(player = None):
   )
 
   if player == None:
-    save_player(new_player)
+    new_player = save_player(new_player)
   else:
     new_player.id = player.id
     update_player(new_player)
+
+  return new_player
 
 
 def check_birth_date(birth_date = ""):

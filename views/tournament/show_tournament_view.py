@@ -19,10 +19,9 @@ def show_tournament_prompt():
     """Show tournaments in the console."""
 
     continue_prompt = True
-
+  
     while continue_prompt:
         tournaments_list = get_all_tournaments_as_list()
-
         questions = [
             inquirer.List(
                 ANSWER_KEY,
@@ -52,3 +51,22 @@ def show_single_tournament(tournament):
     )
     print("------")
     print("")
+
+
+def not_player(tournament):
+    """Display the main question to the user."""
+
+    answer = inquirer.prompt([
+        inquirer.List(
+            ANSWER_KEY,
+            message=
+            "Back",
+            choices=[
+                
+                answers_list[Answer.BACK],
+            ],
+            carousel=True,
+        )
+    ])
+
+    return answer

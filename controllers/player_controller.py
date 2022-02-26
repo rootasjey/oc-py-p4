@@ -3,6 +3,7 @@ from tinydb.table import Document
 import uuid
 from constants.player_view_constants import Answer, answers_list
 from models.player import Player
+import operator
 
 db = TinyDB('data/players.json')
 
@@ -12,8 +13,7 @@ def delete_player(player):
 
 def deserialize_player(player_data):
   """From JSON data, return a Player instance object."""
-
-  player = Player(
+  player =Player(
     player_data['id'], 
     player_data['first_name'], 
     player_data['last_name'], 
@@ -47,6 +47,9 @@ def save_player(player):
   print(f"saved player: {player.name} ({player.elo})")
   print("-------------")
   print("")
+
+  player.id = id
+  return player
 
 def update_player(player):
   """Update a player to the database"""
@@ -88,7 +91,9 @@ def get_all_players_as_list(include_back = True):
 def get_player_from_id(player_id):
   """Return a player dictionnary from an id."""
   
-  return db.get(doc_id = int(player_id))
+  player_data = db.get(doc_id = int(player_id))
+  return Player.fromJSON(player_data)
+
 
 
 def format_player(player):
@@ -96,5 +101,18 @@ def format_player(player):
   
   player_id = f"{player['id']}" # to retrieve player data
   player_name = f"{player['first_name']} {player['last_name']} ({player['elo']})"
+  return (player_name, player_id,)
+def sorted_players_by_alphab():
+  players = get_all_players_as_list() 
+  sorted_list = sorted(players, key=lambda x: x[0])
+  for player in sorted_list:
+    print(f"{player[0]}")
+
+def sorted_players_by_elo():
+  players = get_all_players()
   
-  return (player_name, player_id)
+  sorted_list = sorted(players, key=lambda x: x['elo'], reverse=True)
+  for player in sorted_list:
+    print(f"{player['first_name']} {player['last_name']} ({player['elo']})")
+
+

@@ -9,6 +9,7 @@ python = "^3.8"
 inquirer = "^2.7.0"
 tinydb = "^4.5.1"
 confine-controller = "^1.0.2"
+django-vies = "^6.0.2"
 
 [tool.poetry.dev-dependencies]
 

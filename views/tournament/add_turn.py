@@ -1,24 +1,26 @@
+
 import inquirer
 from enum import Enum
 from constants.common_constants import ANSWER_KEY
-from constants.common_constants import SOMETHING_UNEXPECTED_STR, NOT_AVAILABLE_FEATURE_STR
-from controllers.turn_controller import get_all_turns_as_list, get_turn_from_id, deserialize_turn
+from controllers.turn_controller import get_all_turns_as_list,create_next_match
+
+#from views.turn.generate_next_turn import generate_next_turn_prompt
+from controllers.tournament_controller import add_turn_to_tournament
 
 class Answer(Enum):
     """Possible answers for this prompt"""
-    ADD_EXISTING = 0
-    CREATE_NEW = 1
-    BACK = 2
+    BACK = 0
+    #CREATE_NEXT = 1
+
 
 
 answers_list = {
-    Answer.ADD_EXISTING: "Add existing turn",
-    Answer.CREATE_NEW: "Create new turn",
+    #Answer.CREATE_NEXT: "Create next  turn",
     Answer.BACK: "Back",
 }
 
 
-def add_turn_tournament_prompt(tournament):
+def add_turn_tournament_prompt(turn,tournament):
     """Show tournaments in the console."""
 
     continue_prompt = True
@@ -29,14 +31,12 @@ def add_turn_tournament_prompt(tournament):
       if (answer[ANSWER_KEY] == answers_list[Answer.BACK]):
         continue_prompt = False
 
-      elif (answer[ANSWER_KEY] == answers_list[Answer.ADD_EXISTING]):
-        show_existin_turns()
-
-      elif (answer[ANSWER_KEY] == answers_list[Answer.CREATE_NEW]):
-        print(NOT_AVAILABLE_FEATURE_STR)
-
-      else:
-        print(SOMETHING_UNEXPECTED_STR)
+      else:  
+        #(answer[ANSWER_KEY] == answers_list[Answer.CREATE_NEXT])
+        #turn = generate_next_turn_prompt()
+        add_turn_to_tournament(tournament, turn)
+        #create_next_match(turn,tournament)
+       
 
 
 def main_question(tournament):
@@ -45,10 +45,9 @@ def main_question(tournament):
   answer = inquirer.prompt([
       inquirer.List(
           ANSWER_KEY,
-          message=f"{tournament.name} {tournament.location} ({tournament.start_date}): What do you want to do?",
-          choices=[
-            answers_list[Answer.ADD_EXISTING], 
-            answers_list[Answer.CREATE_NEW], 
+          message=": What do you want to do?",
+          choices=[ 
+            #answers_list[Answer.CREATE_NEXT],  
             answers_list[Answer.BACK],
           ],
           carousel=True,
@@ -57,35 +56,23 @@ def main_question(tournament):
 
   return answer
 
-def show_existin_turns():
+def show_existing_turns(tournament):
   """Show a list of existing players to add to this tournament."""
-  turns_list = get_all_turns_as_list()
+  turns_list = get_all_turns_as_list(include_back=False)
 
   questions = [
       inquirer.Checkbox(
           ANSWER_KEY,
           message="Which turns do you want to add?",
-          choices=turns_list,
-          carousel=True,
+          choices= turns_list,
       ),
   ]
 
   answers = inquirer.prompt(questions)
-
-  if (answers[ANSWER_KEY] == answers_list[Answer.BACK]):
-    print("nothing")
-  else:
-      turns_data = answers[ANSWER_KEY]
-      print(turns_data)
-      print('------')
-
-      for turn_data in turns_data:
-        turn =  get_turn_from_id(turn_data)
-        turn = deserialize_turn(turn_data)
-        show_single_turn(turn)
-        
-
-
+  turns_data = answers[ANSWER_KEY]
+  return turns_data
+  
+  
 def show_single_turn(turn):
     """Format & display a single turn to the console."""
     

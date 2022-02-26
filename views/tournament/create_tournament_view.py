@@ -1,9 +1,8 @@
 import inquirer
 from enum import Enum
-import datetime
-from models.player import Player
 from models.tournament import Tournament
-from controllers.tournament_controller import create_tournament
+from controllers.tournament_controller import create_tournament,update_tournament
+
 import re
 
 
@@ -30,7 +29,7 @@ answers_list = {
 }
 
 
-def create_tournament_prompt():
+def create_tournament_prompt(tournament=None):
   """Create a new player and add them to the database"""
   answers = start_questions()
   
@@ -50,7 +49,15 @@ def create_tournament_prompt():
     description = answers[answers_list[Answer.DESCRIPTION]],
   )
 
-  create_tournament(new_tournament)
+  #create_tournament(new_tournament)
+
+  if tournament == None:
+    new_tournament = create_tournament(new_tournament)
+  else:
+    new_tournament.id = tournament.id
+    update_tournament(new_tournament)
+
+  return new_tournament
 
 
 def start_questions():
@@ -95,8 +102,7 @@ def start_questions():
       inquirer.Text(
         answers_list[Answer.TIME_CONTROL], 
         message = "How do we control time?",
-        default = "Blitz",
-        show_default = True
+        choices=['Blitz', 'Bulet', 'Rapid'],
       ),
 
       inquirer.Text(
