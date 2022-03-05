@@ -45,7 +45,7 @@ def show_turn_prompt():
 
 def show_single_turn(turn):
     """Format & display a single turn to the console."""
-    
+
     print("------")
     print(
         f"• First name: {turn.name}\n• \n• Start time: {turn.start_time}\n• End time: {turn.end_time}"

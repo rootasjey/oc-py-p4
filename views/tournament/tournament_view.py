@@ -4,6 +4,7 @@ from constants.tournament_view_constants import answers_list, Answer
 from views.tournament.create_tournament_view import create_tournament_prompt
 from views.tournament.show_tournament_view import show_tournament_prompt
 
+
 def tournament_prompt():
     """Display tournament prompt"""
     continue_prompt = True

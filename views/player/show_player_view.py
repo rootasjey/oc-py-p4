@@ -38,8 +38,8 @@ def show_player_prompt():
             continue_prompt = False
         else:
             player = get_player_from_id(answers
-            [ANSWER_KEY])
-          
+                                        [ANSWER_KEY])
+
             #player = deserialize_player(player_data)
             show_single_player(player)
             single_player_prompt(player)
@@ -47,7 +47,7 @@ def show_player_prompt():
 
 def show_single_player(player):
     """Format & display a single player to the console."""
-    
+
     print("------")
     print(
         f"• First name: {player.first_name}\n• Last name: {player.last_name}\n• Elo: {player.elo}\n• Sex: {player.sex}\n• Birth date: {player.birth_date}"

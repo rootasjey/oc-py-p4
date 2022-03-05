@@ -74,7 +74,6 @@ def create_match(turn, tournament):
     return
 
 
-
 def create_next_match(turn, tournament):
 
     previous_turn_id = tournament.turns[-2]
@@ -105,7 +104,7 @@ def create_next_match(turn, tournament):
 
     for player_id in players_ids:
         #print(f"player_id: {player_id}")
-        #print("------")
+        # print("------")
         player = get_player_from_id(player_id)
         players_elo.append(player.elo)
 
@@ -194,7 +193,7 @@ def find_second_player(tournament, players_2):
 
         # PROBLEME: `encounter_player_2_id` ne devrait pas être vide.
         encounter_player_2_id = tournament.encounters.get(proposed_player_2)
-        #print('____2')
+        # print('____2')
         #print(f"encounter_player_2_id: {encounter_player_2_id}")
 
         if (proposed_player_2 != encounter_player_2_id):
@@ -310,8 +309,8 @@ def get_turn_from_id(turn_id):
     """Return a turn dictionnary from an id."""
 
     turn_data = db.get(doc_id=int(turn_id))
-    #print("::::::::::::::::::::::")
-    #print(turn_data)
+    # print("::::::::::::::::::::::")
+    # print(turn_data)
 
     return Turn.fromJSON(turn_data)
 

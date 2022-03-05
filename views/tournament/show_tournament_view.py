@@ -19,7 +19,7 @@ def show_tournament_prompt():
     """Show tournaments in the console."""
 
     continue_prompt = True
-  
+
     while continue_prompt:
         tournaments_list = get_all_tournaments_as_list()
         questions = [
@@ -44,7 +44,7 @@ def show_tournament_prompt():
 
 def show_single_tournament(tournament):
     """Format & display a single tournament to the console."""
-    
+
     print("------")
     print(
         f"• Name: {tournament.name}\n• Location: {tournament.location}\n• Start date: {tournament.start_date}\n• End date: {tournament.end_date}\n• Number of turns: {tournament.number_of_turns}\n• Number of players: {len(tournament.players)}\n• Current turn: {len(tournament.turns)}"
@@ -59,10 +59,9 @@ def not_player(tournament):
     answer = inquirer.prompt([
         inquirer.List(
             ANSWER_KEY,
-            message=
-            "Back",
+            message="Back",
             choices=[
-                
+
                 answers_list[Answer.BACK],
             ],
             carousel=True,

@@ -3,7 +3,8 @@ from enum import Enum
 from controllers.turn_controller import delete_turn
 from constants.common_constants import ANSWER_KEY
 from constants.common_constants import SOMETHING_UNEXPECTED_STR
-from views.match.show_matchs_view import  show_matchs_tournament_prompt
+from views.match.show_matchs_view import show_matchs_tournament_prompt
+
 
 class Answer(Enum):
     """Possible answers for this prompt"""
@@ -31,9 +32,8 @@ def single_turn_prompt(turn, tournament):
             continue_prompt = False
 
         elif (answer[ANSWER_KEY] == answers_list[Answer.SHOW_MATCHS]):
-        
-        
-           show_matchs_tournament_prompt(turn)
+
+            show_matchs_tournament_prompt(turn)
 
         elif (answer[ANSWER_KEY] == answers_list[Answer.DELETE]):
             delete_turn(turn)
@@ -49,8 +49,7 @@ def main_question(turn):
     answer = inquirer.prompt([
         inquirer.List(
             ANSWER_KEY,
-            message=
-            f"{turn.name} ({turn.start_time}): What do you want to do?",
+            message=f"{turn.name} ({turn.start_time}): What do you want to do?",
             choices=[
                 answers_list[Answer.SHOW_MATCHS],
                 answers_list
