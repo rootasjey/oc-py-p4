@@ -2,7 +2,7 @@
 name = "repl_python3_oc-py-p4"
 version = "0.1.0"
 description = ""
-authors = ["rootasjey <<>>"]
+authors = ["Moussa<<>>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -10,6 +10,7 @@ inquirer = "^2.7.0"
 tinydb = "^4.5.1"
 confine-controller = "^1.0.2"
 django-vies = "^6.0.2"
+flake8 = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 

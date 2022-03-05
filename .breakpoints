@@ -12,7 +12,7 @@
       {
         "id": "dfe1b163-3be1-4155-beb2-cc8477979533",
         "line": 36,
-        "version": 437,
+        "version": 1,
         "index": 967
       }
     ],
@@ -20,15 +20,15 @@
       {
         "id": "92092d18-658e-46b4-a84a-c13a71c7b250",
         "line": 378,
-        "version": 28381,
-        "index": 11656
+        "version": 1,
+        "index": 11082
       }
     ],
     "views/main_view.py": [
       {
         "id": "d7c3fc20-ab23-4a0f-b962-a68503564ec5",
         "line": 19,
-        "version": 1273,
+        "version": 1,
         "index": 452
       }
     ],
@@ -36,7 +36,7 @@
       {
         "id": "84b30a75-6121-43f7-94b7-2bb6fc98bfb3",
         "line": 59,
-        "version": 1034,
+        "version": 1,
         "index": 1389
       }
     ],
@@ -58,13 +58,13 @@
       {
         "id": "176aba61-e391-4ed5-a966-702d56b74e9d",
         "line": 79,
-        "version": 8985,
+        "version": 1,
         "index": 1981
       },
       {
         "id": "ac13285d-12c5-4cf0-b097-6275ab494b73",
         "line": 79,
-        "version": 8985,
+        "version": 1,
         "index": 1981
       }
     ],
@@ -72,13 +72,13 @@
       {
         "id": "8b5fe7f1-fe5f-4504-8cdd-a5e77255424a",
         "line": 5,
-        "version": 1184,
+        "version": 1,
         "index": 152
       },
       {
         "id": "c3ac92c6-d113-4482-bacd-b5a981307ba9",
         "line": 16,
-        "version": 1184,
+        "version": 1,
         "index": 812
       }
     ]
